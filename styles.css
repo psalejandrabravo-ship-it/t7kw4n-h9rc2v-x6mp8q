@@ -1,0 +1,210 @@
+/* MIRARIM Styles - 16:9 responsive, tactile artisan feel */
+:root {
+  --cream: #F4F1DE;
+  --deep-blue: #2B2155;
+  --coral: #E07A5F;
+  --gold: #E6B84C;
+  --dark: #1E1830;
+  --text: var(--deep-blue);
+  --bg: var(--cream);
+  --radius: 24px;
+  --shadow: 0 8px 24px rgba(30, 24, 48, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#game-container {
+  width: 100%;
+  max-width: 1920px;
+  aspect-ratio: 16 / 9;
+  max-height: 100vh;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+@media (max-aspect-ratio: 16/9) {
+  #game-container {
+    width: 100vw;
+    height: calc(100vw * 9 / 16);
+  }
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  padding: 2rem;
+  background: var(--cream);
+}
+
+.screen.active { display: flex; }
+
+h1, h2, h3 {
+  color: var(--deep-blue);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.btn {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--coral);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s;
+  box-shadow: 0 4px 12px rgba(224, 122, 95, 0.3);
+}
+
+.btn:hover, .btn:focus { transform: translateY(-2px); outline: 3px solid var(--gold); }
+.btn.secondary { background: var(--deep-blue); }
+.btn.gold { background: var(--gold); color: var(--dark); }
+
+.logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+}
+
+.tools-bar {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: auto;
+  padding: 1rem;
+}
+
+.tool-btn {
+  flex: 1;
+  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  border: 2px solid var(--deep-blue);
+  color: var(--deep-blue);
+  border-radius: var(--radius);
+  padding: 1rem;
+  min-height: 80px;
+}
+
+.tool-btn .icon { font-size: 1.5rem; }
+
+.avatar-card {
+  width: 120px;
+  height: 140px;
+  background: white;
+  border-radius: var(--radius);
+  border: 3px solid var(--deep-blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  overflow: hidden;
+}
+
+.avatar-card.selected { border-color: var(--coral); transform: scale(1.05); }
+.avatar-card img { width: 100%; height: 80%; object-fit: cover; }
+.avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.rotate-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--cream);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.rotate-overlay.active { display: flex; }
+
+.piece, .slot {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  background: white;
+  border: 3px solid var(--deep-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.piece.matched { opacity: 0.5; pointer-events: none; }
+.slot.correct { background: #e8f5e9; border-color: #4caf50; }
+
+.plank {
+  width: 100px;
+  height: 30px;
+  background: #d4a574;
+  border-radius: 8px;
+  margin: 0.25rem;
+  cursor: pointer;
+}
+
+.companion-panel {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: white;
+  border-radius: var(--radius);
+  padding: 1rem;
+  max-width: 320px;
+  max-height: 80%;
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+  display: none;
+  z-index: 100;
+}
+
+.companion-panel.open { display: block; }
+
+@media (max-width: 768px) {
+  .btn { font-size: 1rem; padding: 0.6rem 1rem; }
+  h1 { font-size: 1.8rem; }
+  .tools-bar { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

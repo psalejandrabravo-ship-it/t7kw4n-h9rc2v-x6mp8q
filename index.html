@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MIRARIM: La misión del maletín</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="rotate-overlay" class="rotate-overlay">
+    <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+    <p>Gira tu celular para jugar</p>
+  </div>
+
+  <div id="game-container">
+    <div id="screen-cover" class="screen active">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+        <img src="assets/logos/logo-color.png" alt="MIRARIM" class="logo" onerror="this.style.display='none'">
+        <button class="btn secondary" id="btn-companion" style="min-width: auto; padding: 0.5rem 1rem;">Acompañante</button>
+      </div>
+      <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">MIRARIM</h1>
+        <h2 style="font-size: 1.8rem; color: var(--coral); margin-bottom: 1rem;">La misión del maletín</h2>
+        <p style="font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem;">Una aventura para los momentos en que algo cuesta</p>
+        <button class="btn" id="btn-start" style="font-size: 1.3rem; padding: 1rem 2.5rem;">Comenzar</button>
+      </div>
+    </div>
+
+    <div id="screen-config" class="screen"></div>
+    <div id="screen-avatars" class="screen"></div>
+    <div id="screen-welcome" class="screen"></div>
+    <div id="screen-map" class="screen"></div>
+    <div id="screen-mission1" class="screen"></div>
+    <div id="screen-mission2" class="screen"></div>
+    <div id="screen-mission3" class="screen"></div>
+    <div id="screen-briefcase" class="screen"></div>
+    <div id="screen-tools" class="screen"></div>
+    <div id="screen-video" class="screen"></div>
+    <div id="screen-goodbye" class="screen"></div>
+    <div id="screen-summary" class="screen"></div>
+  </div>
+
+  <div id="companion-panel" class="companion-panel">
+    <h3>Panel del acompañante</h3>
+    <div id="companion-content"></div>
+    <button class="btn secondary" id="close-companion" style="margin-top: 1rem;">Cerrar</button>
+  </div>
+
+  <script src="texts.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
